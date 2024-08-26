@@ -45,54 +45,80 @@ class BinarySearchTree {
    * @returns {boolean} Indicates if this tree is empty.
    */
   isEmpty() {
-    // your code here
+    return this.root === null;
   }
 
   /**
    * Retrieves the smallest integer data from this tree.
    * - Time: O(?).
    * - Space: O(?).
-   * @param {Node} current The node that is currently accessed from the tree as
+   * @param {BSTNode} current The node that is currently accessed from the tree as
    *    the tree is being traversed.
    * @returns {number} The smallest integer from this tree.
    */
   min(current = this.root) {
-    // your code here
+    if (this.isEmpty()) return null;
+
+    while (current.left) {
+      current = current.left;
+    }
+    return current.data;
   }
 
   /**
    * Retrieves the largest integer data from this tree.
    * - Time: O(?).
    * - Space: O(?).
-   * @param {Node} current The node that is currently accessed from the tree as
+   * @param {BSTNode} current The node that is currently accessed from the tree as
    *    the tree is being traversed.
    * @returns {number} The largest integer from this tree.
    */
   max(current = this.root) {
-    // your code here
+    if (this.isEmpty()) return null;
+
+    while (current.right) {
+      current = current.right;
+    }
+    return current.data;
   }
 
   /**
    * Retrieves the smallest integer data from this tree.
    * - Time: O(?).
    * - Space: O(?).
-   * @param {Node} current The node that is currently accessed from the tree as
+   * @param {BSTNode} current The node that is currently accessed from the tree as
    *    the tree is being traversed.
    * @returns {number} The smallest integer from this tree.
    */
-  minRecursive(current = this.root) {}
+  minRecursive(current = this.root) {
+    if (this.isEmpty()) return null;
+    if (current.left === null) return current.data;
+
+    return this.minRecursive(current.left);
+  }
 
   /**
    * Retrieves the largest integer data from this tree.
    * - Time: O(?).
    * - Space: O(?).
-   * @param {Node} current The node that is currently accessed from the tree as
+   * @param {BSTNode} current The node that is currently accessed from the tree as
    *    the tree is being traversed.
    * @returns {number} The largest integer from this tree.
    */
-  maxRecursive(current = this.root) {}
+  maxRecursive(current = this.root) {
+    if (this.isEmpty()) return null;
+    else if (current.right == null) return current.data;
 
-  // Logs this tree horizontally with the root on the left.
+    return this.maxRecursive(current.right);
+  }
+
+  /**
+   * Logs this tree horizontally with the root on the left.
+   * @param {BSTNode} node
+   * @param {number} spaceCnt
+   * @param {number} spaceIncr
+   * @returns {void}
+   */
   print(node = this.root, spaceCnt = 0, spaceIncr = 10) {
     if (!node) {
       return;
@@ -173,3 +199,7 @@ threeLevelTree.root.right.left = new BSTNode(13);
 // oneNodeTree.print();
 // twoLevelTree.print();
 threeLevelTree.print();
+console.log(threeLevelTree.min());
+console.log(threeLevelTree.minRecursive());
+console.log(threeLevelTree.max());
+console.log(threeLevelTree.maxRecursive());
