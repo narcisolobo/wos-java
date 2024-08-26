@@ -8,5 +8,6 @@ public class VariablesDataTypes {
 
         String myName = "Narciso";
         System.out.println(myName);
+        System.out.println(myName.getClass().getName());
     }
 }
