@@ -140,4 +140,4 @@ More generally, method declarations have six components, in order:
 3. The method name—the rules for field names apply to method names as well.
 4. The parameter list in parentheses—a comma-separated list of input parameters, preceded by their data types, enclosed by parentheses, `()`. If there are no parameters, you must use empty parentheses.
 5. An exception list (not part of this course).
-6. The method body, enclosed between braces—the method's code, including the declaration of local variables, goes here.
+6. The method body, enclosed between curly braces—the method's code, including the declaration of local variables, goes here.

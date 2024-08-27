@@ -83,7 +83,7 @@ class BinarySearchTree {
   }
 
   /**
-   * Retrieves the smallest integer data from this tree.
+   * Retrieves the smallest integer data from this tree. Recursive.
    * - Time: O(?).
    * - Space: O(?).
    * @param {BSTNode} current The node that is currently accessed from the tree as
@@ -98,7 +98,7 @@ class BinarySearchTree {
   }
 
   /**
-   * Retrieves the largest integer data from this tree.
+   * Retrieves the largest integer data from this tree. Recursive.
    * - Time: O(?).
    * - Space: O(?).
    * @param {BSTNode} current The node that is currently accessed from the tree as
@@ -143,18 +143,42 @@ class BinarySearchTree {
    * @returns {boolean} Indicates if the searchVal was found.
    */
   contains(searchVal, current = this.root) {
-    // your code here
+    while (current) {
+      if (current.data === searchVal) {
+        return true;
+      }
+
+      if (searchVal < current.data) {
+        current = current.left;
+      } else if (searchVal > current.data) {
+        current = current.right;
+      }
+    }
+
+    return false;
   }
 
   /**
-   * Determines if this tree contains the given searchVal.
+   * Determines if this tree contains the given searchVal. Recursive.
    * - Time: O(?).
    * - Space: O(?).
    * @param {number} searchVal The number to search for in the node's data.
    * @returns {boolean} Indicates if the searchVal was found.
    */
   containsRecursive(searchVal, current = this.root) {
-    // your code here
+    if (current === null) {
+      return false;
+    }
+
+    if (current.data === searchVal) {
+      return true;
+    }
+
+    if (searchVal < current.data) {
+      return this.containsRecursive(searchVal, current.left);
+    } else if (searchVal > current.data) {
+      return this.containsRecursive(searchVal, current.right);
+    }
   }
 
   /**
@@ -166,6 +190,34 @@ class BinarySearchTree {
    *    startNode is not the root).
    */
   range(startNode = this.root) {
+    return this.max(startNode) - this.min(startNode);
+  }
+
+  /**
+   * Inserts a new node with the given newVal in the right place to preserve
+   * the order of this tree.
+   * - Time: O(?).
+   * - Space: O(?).
+   * @param {number} newVal The data to be added to a new node.
+   * @param {Node} current The node that is currently accessed from the tree as
+   *    the tree is being traversed.
+   * @returns {BinarySearchTree} This tree.
+   */
+  insert(newVal, current = this.root) {
+    // your code here
+  }
+
+  /**
+   * Inserts a new node with the given newVal in the right place to preserve
+   * the order of this tree. Recursive.
+   * - Time: O(?).
+   * - Space: O(?).
+   * @param {number} newVal The data to be added to a new node.
+   * @param {Node} current The node that is currently accessed from the tree as
+   *    the tree is being traversed.
+   * @returns {BinarySearchTree} This tree.
+   */
+  insertRecursive(newVal, current = this.root) {
     // your code here
   }
 }
