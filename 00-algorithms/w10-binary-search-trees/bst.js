@@ -195,7 +195,8 @@ twoLevelTree.root.right = new BSTNode(15);
 */
 const threeLevelTree = new BinarySearchTree();
 threeLevelTree.root = new BSTNode(10);
-threeLevelTree.root.left = new BSTNode(5);
+const fiveNode = new BSTNode(5);
+threeLevelTree.root.left = fiveNode;
 threeLevelTree.root.left.left = new BSTNode(2);
 threeLevelTree.root.left.right = new BSTNode(6);
 threeLevelTree.root.right = new BSTNode(15);
@@ -233,6 +234,8 @@ threeLevelTree.root.right.left = new BSTNode(13);
 // oneNodeTree.print();
 // twoLevelTree.print();
 
+threeLevelTree.print();
+
 const searchVal1 = 13;
 const expected1 = true;
 
@@ -253,3 +256,6 @@ console.log(`${result2} should equal ${expected2}`);
 
 const treeRange = threeLevelTree.range();
 console.log(`${treeRange} should equal 13`);
+
+const subtreeRange = threeLevelTree.range(fiveNode);
+console.log(`${subtreeRange} should equal 4`);
