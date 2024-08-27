@@ -134,6 +134,40 @@ class BinarySearchTree {
 
     this.print(node.left, spaceCnt);
   }
+
+  /**
+   * Determines if this tree contains the given searchVal.
+   * - Time: O(?).
+   * - Space: O(?).
+   * @param {number} searchVal The number to search for in the node's data.
+   * @returns {boolean} Indicates if the searchVal was found.
+   */
+  contains(searchVal, current = this.root) {
+    // your code here
+  }
+
+  /**
+   * Determines if this tree contains the given searchVal.
+   * - Time: O(?).
+   * - Space: O(?).
+   * @param {number} searchVal The number to search for in the node's data.
+   * @returns {boolean} Indicates if the searchVal was found.
+   */
+  containsRecursive(searchVal, current = this.root) {
+    // your code here
+  }
+
+  /**
+   * Calculates the range (max - min) from the given startNode.
+   * - Time: O(?).
+   * - Space: O(?).
+   * @param {BSTNode} startNode The node to start from to calculate the range.
+   * @returns {number|null} The range of this tree (or a subtree if the
+   *    startNode is not the root).
+   */
+  range(startNode = this.root) {
+    // your code here
+  }
 }
 
 const emptyTree = new BinarySearchTree();
@@ -198,8 +232,24 @@ threeLevelTree.root.right.left = new BSTNode(13);
 
 // oneNodeTree.print();
 // twoLevelTree.print();
-threeLevelTree.print();
-console.log(threeLevelTree.min());
-console.log(threeLevelTree.minRecursive());
-console.log(threeLevelTree.max());
-console.log(threeLevelTree.maxRecursive());
+
+const searchVal1 = 13;
+const expected1 = true;
+
+const searchVal2 = 1;
+const expected2 = false;
+
+const result1 = threeLevelTree.contains(searchVal1);
+console.log(`${result1} should equal ${expected1}`);
+
+const result2 = threeLevelTree.contains(searchVal2);
+console.log(`${result2} should equal ${expected2}`);
+
+const result3 = threeLevelTree.containsRecursive(searchVal1);
+console.log(`${result3} should equal ${expected1}`);
+
+const result4 = threeLevelTree.containsRecursive(searchVal2);
+console.log(`${result2} should equal ${expected2}`);
+
+const treeRange = threeLevelTree.range();
+console.log(`${treeRange} should equal 13`);
