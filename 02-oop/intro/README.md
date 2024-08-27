@@ -6,9 +6,9 @@ Learning Objectives for the Day:
 - Constructors and overloading
 - The `this` keyword
 
-## What is a class? What is an object?
+## Classes and Objects
 
-A class provides the blueprint for an object's state and behavior. It does this through what we call *"members"* - fields and methods.
+A class provides the blueprint for an object's state and behavior. It does this through fields and methods, collectively called the *"members"* of the class.
 
 Take, for instance, a car. A car might have fields for its make, model, and color. It might also have methods for drive, beep, brake, etc.
 
@@ -73,6 +73,8 @@ The fields of `Rectangle` are `topAndBottomLength` and `leftAndRightLength` and 
 
 ### Defining the Constructor
 A constructor in Java is a special method that is called when an object of a class is created. Its purpose is to initialize the object's fields with specific values.
+
+If a class is a blueprint, then the constructor is the factory.
 
 In our `Rectangle` class, we have defined one constructor:
 ```java
