@@ -204,7 +204,18 @@ class BinarySearchTree {
    * @returns {BinarySearchTree} This tree.
    */
   insert(newVal, current = this.root) {
-    // your code here
+    // pseudo code first!
+    // instantiate a new node
+    // check if tree is empty
+    // if empty, then set root to new node
+    //    return self
+    //
+    // if not, while loop
+    //    compare newVal with root.data
+    //    if newVal is less
+    //      if left is null, current.left is new node
+    //        return self
+    //      if not current = current.left
   }
 
   /**
@@ -223,6 +234,10 @@ class BinarySearchTree {
 }
 
 const emptyTree = new BinarySearchTree();
+/* oneLevelTree
+        root
+        10
+*/
 const oneNodeTree = new BinarySearchTree();
 oneNodeTree.root = new BSTNode(10);
 
