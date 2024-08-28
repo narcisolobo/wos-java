@@ -204,18 +204,31 @@ class BinarySearchTree {
    * @returns {BinarySearchTree} This tree.
    */
   insert(newVal, current = this.root) {
-    // pseudo code first!
-    // instantiate a new node
-    // check if tree is empty
-    // if empty, then set root to new node
-    //    return self
-    //
-    // if not, while loop
-    //    compare newVal with root.data
-    //    if newVal is less
-    //      if left is null, current.left is new node
-    //        return self
-    //      if not current = current.left
+    const node = new BSTNode(newVal);
+
+    if (this.isEmpty()) {
+      this.root = node;
+      return this;
+    }
+
+    while (true) {
+      if (newVal <= current.data) {
+        if (current.left === null) {
+          current.left = node;
+          return this;
+        }
+
+        current = current.left;
+      } else {
+        // newVal is greater than current.data
+        if (current.right === null) {
+          current.right = node;
+          return this;
+        }
+
+        current = current.right;
+      }
+    }
   }
 
   /**
@@ -229,7 +242,24 @@ class BinarySearchTree {
    * @returns {BinarySearchTree} This tree.
    */
   insertRecursive(newVal, current = this.root) {
-    // your code here
+    if (this.isEmpty()) {
+      this.root = new BSTNode(newVal);
+      return this;
+    }
+
+    if (newVal > current.data) {
+      if (current.right === null) {
+        current.right = new BSTNode(newVal);
+        return this;
+      }
+      return this.insertRecursive(newVal, current.right);
+    }
+
+    if (current.left === null) {
+      current.left = new BSTNode(newVal);
+      return this;
+    }
+    return this.insertRecursive(newVal, current.left);
   }
 }
 

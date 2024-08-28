@@ -3,8 +3,8 @@
 ## Learning Objectives:
 
 - Understand the concept of inheritance in Java.
-- Learn how to create subclasses and use the extends keyword.
-- Explore the super keyword and how it is used to access superclass methods and constructors.
+- Learn how to create subclasses and use the `extends` keyword.
+- Explore the `super` keyword and how it is used to access superclass methods and constructors.
 - Recognize the difference between method overriding and method overloading.
 - Understand the concept of polymorphism.
 
@@ -111,3 +111,36 @@ public class Vehicle {
     }
 }
 ```
+## Polymorphism
+Polymorphism (many forms) allows objects of different classes to implement different versions of the same method. We accomplish this by overriding the inherited method.
+```java
+public class Vehicle {
+    public void startEngine() {
+        System.out.println("Vehicle engine started");
+    }
+}
+
+public class Car extends Vehicle {
+    @Override
+    public void startEngine() {
+        System.out.println("Car engine started");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car();
+        myCar.startEngine(); // Outputs "Car engine started"
+    }
+}
+```
+Java determines which `startEngine()` method to call based on the actual object type (`Car` or `Vehicle`).
+
+## Summary
+
+- Inheritance allows a class to inherit fields and methods from another class.
+- The `extends` keyword is used to create a subclass.
+- The `super` keyword is used to access superclass methods and constructors.
+- Method overriding allows a subclass to provide a specific implementation of a method from its superclass.
+- Method overloading allows methods with the same name but different parameters to coexist in the same class.
+- Polymorphism allows a single action to be performed in different ways based on the actual object type.
