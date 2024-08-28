@@ -9,20 +9,16 @@ public class Muppet {
         muppetCount++;
     }
 
-    public static int getMuppetCount() {
-        return muppetCount;
-    }
-
-    public static void setMuppetCount(int muppetCount) {
-        Muppet.muppetCount = muppetCount;
-    }
-
     @Override
     public String toString() {
         return "Muppet{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
+    }
+
+    public static int getMuppetCount() {
+        return muppetCount;
     }
 
     public String getFirstName() {
