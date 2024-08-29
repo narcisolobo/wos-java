@@ -220,7 +220,6 @@ class BinarySearchTree {
 
         current = current.left;
       } else {
-        // newVal is greater than current.data
         if (current.right === null) {
           current.right = node;
           return this;
@@ -271,7 +270,14 @@ class BinarySearchTree {
    * @param {Array<number>} vals The data that has been visited so far.
    * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
    */
-  toArrPreorder(node = this.root, vals = []) {}
+  toArrPreorder(node = this.root, vals = []) {
+    if (node) {
+      vals.push(node.data);
+      this.toArrPreorder(node.left, vals);
+      this.toArrPreorder(node.right, vals);
+    }
+    return vals;
+  }
 
   /**
    * DFS Inorder: (Left, CurrNode, Right)
@@ -283,7 +289,14 @@ class BinarySearchTree {
    * @param {Array<number>} vals The data that has been visited so far.
    * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
    */
-  toArrInorder(node = this.root, vals = []) {}
+  toArrInorder(node = this.root, vals = []) {
+    if (node) {
+      this.toArrInorder(node.left, vals);
+      vals.push(node.data);
+      this.toArrInorder(node.right, vals);
+    }
+    return vals;
+  }
 
   /**
    * DFS Postorder (Left, Right, CurrNode)
@@ -294,7 +307,14 @@ class BinarySearchTree {
    * @param {Array<number>} vals The data that has been visited so far.
    * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
    */
-  toArrPostorder(node = this.root, vals = []) {}
+  toArrPostorder(node = this.root, vals = []) {
+    if (node) {
+      this.toArrPostorder(node.left, vals);
+      this.toArrPostorder(node.right, vals);
+      vals.push(node.data);
+    }
+    return vals;
+  }
 }
 
 const emptyTree = new BinarySearchTree();
@@ -364,29 +384,3 @@ fullTree
 
 // oneNodeTree.print();
 // twoLevelTree.print();
-
-threeLevelTree.print();
-
-const searchVal1 = 13;
-const expected1 = true;
-
-const searchVal2 = 1;
-const expected2 = false;
-
-const result1 = threeLevelTree.contains(searchVal1);
-console.log(`${result1} should equal ${expected1}`);
-
-const result2 = threeLevelTree.contains(searchVal2);
-console.log(`${result2} should equal ${expected2}`);
-
-const result3 = threeLevelTree.containsRecursive(searchVal1);
-console.log(`${result3} should equal ${expected1}`);
-
-const result4 = threeLevelTree.containsRecursive(searchVal2);
-console.log(`${result2} should equal ${expected2}`);
-
-const treeRange = threeLevelTree.range();
-console.log(`${treeRange} should equal 13`);
-
-const subtreeRange = threeLevelTree.range(fiveNode);
-console.log(`${subtreeRange} should equal 4`);
