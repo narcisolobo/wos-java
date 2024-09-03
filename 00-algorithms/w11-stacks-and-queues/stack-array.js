@@ -55,3 +55,32 @@ class Stack {
    */
   size() {}
 }
+
+const myStack = new Stack();
+
+myStack.push(25);
+myStack.push(72);
+myStack.push(76);
+myStack.push(89);
+myStack.push(5);
+myStack.push(37);
+myStack.push(15);
+myStack.push(55);
+myStack.push(79);
+
+const newLength = myStack.push(12);
+console.log(`${newLength} should equal 10`);
+
+const popped = myStack.pop();
+console.log(`${popped} should equal 12`);
+
+const peek = myStack.peek();
+console.log(`${peek} should equal 79`);
+
+const emptyStack = new Stack();
+
+console.log(`${emptyStack.isEmpty()} should equal true`);
+console.log(`${myStack.isEmpty()} should equal false`);
+
+const size = myStack.size();
+console.log(`${size} should equal 9`);
