@@ -6,6 +6,9 @@ class StackNode {
 }
 
 class LinkedListStack {
+  /**
+   * @param {StackNode|null}
+   */
   constructor() {
     this.head = null;
   }
@@ -55,5 +58,7 @@ class LinkedListStack {
 
   // Time: O(n) linear, n = list length
   // Space: O(n)
-  print() {}
+  print() {
+    console.log(`${this.head.data} -> ${this.head.next}`);
+  }
 }
