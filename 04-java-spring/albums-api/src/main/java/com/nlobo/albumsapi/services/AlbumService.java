@@ -5,6 +5,7 @@ import com.nlobo.albumsapi.repositories.AlbumRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlbumService {
@@ -15,11 +16,36 @@ public class AlbumService {
         this.albumRepository = albumRepository;
     }
 
-    public List<Album> findAll() {
+    // find all albums
+    public List<Album> findAllAlbums() {
         return this.albumRepository.findAll();
     }
 
-    public Album create(Album album) {
+    // create new album
+    public Album createAlbum(Album album) {
         return this.albumRepository.save(album);
+    }
+
+    // find one album by id
+    public Album findAlbum(Long id) {
+        Optional<Album> optionalAlbum = this.albumRepository.findById(id);
+        return optionalAlbum.orElse(null);
+    }
+
+    public Album updateAlbum(Long id, Album album) {
+        Optional<Album> optionalAlbum = this.albumRepository.findById(id);
+        if (optionalAlbum.isPresent()) {
+            Album albumToUpdate = optionalAlbum.get();
+            albumToUpdate.setTitle(album.getTitle());
+            albumToUpdate.setArtist(album.getArtist());
+            albumToUpdate.setReleaseDate(album.getReleaseDate());
+            return this.albumRepository.save(albumToUpdate);
+        }
+
+        return null;
+    }
+
+    public void deleteAlbum(Long id) {
+        this.albumRepository.deleteById(id);
     }
 }
