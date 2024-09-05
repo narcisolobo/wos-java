@@ -15,7 +15,9 @@ class Queue {
    * @param {any} item The new item to add to the back.
    * @returns {number} The new size of this queue.
    */
-  enqueue(item) {}
+  enqueue(item) {
+    // push
+  }
 
   /**
    * Removes and returns the first item of this queue.
@@ -24,7 +26,10 @@ class Queue {
    * - Space: O(1) constant.
    * @returns {any} The first item or undefined if empty.
    */
-  dequeue() {}
+  dequeue() {
+    // no pop
+    // built-in function that removes and returns the first elem in an array
+  }
 
   /**
    * Retrieves the first item without removing it.
@@ -32,7 +37,9 @@ class Queue {
    * - Space: O(1) constant.
    * @returns {any} The first item or undefined if empty.
    */
-  front() {}
+  front() {
+    // like peek
+  }
 
   /**
    * Returns whether or not this queue is empty.
