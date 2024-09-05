@@ -29,6 +29,10 @@
         </li>
       </ul>
     </div>
+    <form class="d-flex" role="search" action="/albums/search" method="post">
+      <input class="form-control me-2" type="search" placeholder="Search by title" aria-label="Search" name="title" />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
   </div>
 </nav>
 <main class="container py-3">

@@ -29,6 +29,10 @@
                     </li>
                 </ul>
             </div>
+            <form class="d-flex" role="search" action="/albums/search" method="post">
+                <input class="form-control me-2" type="search" placeholder="Search by title" aria-label="Search" name="title" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
     </nav>
     <main class="container py-3">
@@ -69,20 +73,37 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Artist</th>
-                    <th>Release Date</th>
+                    <th>
+                        <span>Title </span>
+                        <a href="/albums/sort/title">Sort by title</a>
+                    </th>
+                    <th>
+                        <span>Artist </span>
+                        <a href="/albums/sort/artist">Sort by artist</a>
+                    </th>
+                    <th>
+                        <span>Release Date </span>
+                        <a href="/albums/sort/release-date">Sort by release date</a>
+                    </th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach var="album" items="${albums}">
                     <tr>
-                        <td>
+                        <td class="align-middle">
                             <a href="/albums/${album.id}">${album.title}</a>
                         </td>
-                        <td>${album.artist}</td>
-                        <td>
+                        <td class="align-middle">${album.artist}</td>
+                        <td class="align-middle">
                             <fmt:formatDate type="date" value="${album.releaseDate}" />
+                        </td>
+                        <td class="align-middle d-flex">
+                            <a href="/albums/${album.id}/edit" class="btn btn-sm btn-warning me-2">Edit</a>
+                            <form action="/albums/${album.id}/delete" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>

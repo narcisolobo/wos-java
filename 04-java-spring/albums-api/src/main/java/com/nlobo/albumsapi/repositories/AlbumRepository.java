@@ -8,5 +8,9 @@ import java.util.List;
 
 @Repository
 public interface AlbumRepository extends CrudRepository<Album, Long> {
-    List<Album> findAll();
+    List<Album> findByTitleContaining(String title);
+    List<Album> findAllByOrderByTitle();
+    List<Album> findAllByOrderByArtist();
+    List<Album> findAllByOrderByReleaseDate();
+    List<Album> findAllByOrderByCreatedAt();
 }

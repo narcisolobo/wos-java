@@ -18,7 +18,7 @@ public class AlbumService {
 
     // find all albums
     public List<Album> findAllAlbums() {
-        return this.albumRepository.findAll();
+        return (List<Album>) albumRepository.findAll();
     }
 
     // create new album
@@ -32,6 +32,7 @@ public class AlbumService {
         return optionalAlbum.orElse(null);
     }
 
+    // update one album
     public Album updateAlbum(Long id, Album album) {
         Optional<Album> optionalAlbum = this.albumRepository.findById(id);
         if (optionalAlbum.isPresent()) {
@@ -45,7 +46,29 @@ public class AlbumService {
         return null;
     }
 
+    // delete one album by id
     public void deleteAlbum(Long id) {
         this.albumRepository.deleteById(id);
+    }
+
+    // search by title
+    public List<Album> searchByTitle(String title) {
+        return this.albumRepository.findByTitleContaining(title);
+    }
+
+    public List<Album> sortedByTitle() {
+        return this.albumRepository.findAllByOrderByTitle();
+    }
+
+    public List<Album> sortedByArtist() {
+        return this.albumRepository.findAllByOrderByArtist();
+    }
+
+    public List<Album> sortedByCreatedAt() {
+        return this.albumRepository.findAllByOrderByCreatedAt();
+    }
+
+    public List<Album> sortedByReleaseDate() {
+        return this.albumRepository.findAllByOrderByReleaseDate();
     }
 }
