@@ -1,11 +1,17 @@
 /**
- * Class to represent a queue using an array to store the queued items.
- * Follows a FIFO (First In First Out) order where new items are added to the
- * back and items are removed from the front.
+ * Class to represent a queue using an array which follows a FIFO
+ * (First In First Out) order. New items are added to the back and items are
+ * removed from the front.
  */
 class Queue {
-  constructor() {
-    this.items = [];
+  /**
+   *
+   * @param {Array<any>} items The starting items, useful for if you already
+   *    have an array of items in the right order and want to convert it to a
+   *    queue instance to get access to the queue methods.
+   */
+  constructor(items = []) {
+    this.items = items;
   }
 
   /**
@@ -16,7 +22,8 @@ class Queue {
    * @returns {number} The new size of this queue.
    */
   enqueue(item) {
-    // push
+    this.items.push(item);
+    return this.size();
   }
 
   /**
@@ -27,8 +34,7 @@ class Queue {
    * @returns {any} The first item or undefined if empty.
    */
   dequeue() {
-    // no pop
-    // built-in function that removes and returns the first elem in an array
+    return this.items.shift();
   }
 
   /**
@@ -38,7 +44,7 @@ class Queue {
    * @returns {any} The first item or undefined if empty.
    */
   front() {
-    // like peek
+    return this.items[0];
   }
 
   /**
@@ -47,7 +53,9 @@ class Queue {
    * - Space: O(1) constant.
    * @returns {boolean}
    */
-  isEmpty() {}
+  isEmpty() {
+    return this.items.length === 0;
+  }
 
   /**
    * Retrieves the size of this queue.
@@ -55,7 +63,19 @@ class Queue {
    * - Space: O(1) constant.
    * @returns {number} The length.
    */
-  size() {}
-}
+  size() {
+    return this.items.length;
+  }
 
-/* Rebuild the above class using a linked list instead of an array. */
+  /**
+   * Logs the items of this queue.
+   * - Time: O(n) linear.
+   * - Space: O(n) linear.
+   * @returns {string} The same string that is logged.
+   */
+  print() {
+    const str = this.items.join(' ');
+    console.log(str);
+    return str;
+  }
+}
