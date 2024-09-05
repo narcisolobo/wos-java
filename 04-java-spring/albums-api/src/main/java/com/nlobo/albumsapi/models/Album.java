@@ -16,14 +16,14 @@ public class Album {
     private Long id;
 
     @NotNull
-    @Size(min = 1, max = 255)
+    @Size(min = 1, max = 45, message = "Title must be between 1 and 45 characters.")
     private String title;
 
     @NotNull
-    @Size(min = 1, max = 255)
+    @Size(min = 1, max = 45, message = "Artist must be between 1 and 45 characters.")
     private String artist;
 
-    @NotNull
+    @NotNull(message = "Please enter release date.")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date releaseDate;
 
@@ -54,27 +54,27 @@ public class Album {
         this.id = id;
     }
 
-    public @NotNull @Size(min = 1, max = 255) String getTitle() {
+    public @NotNull @Size(min = 1, max = 45, message = "Title must be between 1 and 45 characters.") String getTitle() {
         return title;
     }
 
-    public void setTitle(@NotNull @Size(min = 1, max = 255) String title) {
+    public void setTitle(@NotNull @Size(min = 1, max = 45, message = "Title must be between 1 and 45 characters.") String title) {
         this.title = title;
     }
 
-    public @NotNull @Size(min = 1, max = 255) String getArtist() {
+    public @NotNull @Size(min = 1, max = 45, message = "Artist must be between 1 and 45 characters.") String getArtist() {
         return artist;
     }
 
-    public void setArtist(@NotNull @Size(min = 1, max = 255) String artist) {
+    public void setArtist(@NotNull @Size(min = 1, max = 45, message = "Artist must be between 1 and 45 characters.") String artist) {
         this.artist = artist;
     }
 
-    public @NotNull Date getReleaseDate() {
+    public @NotNull(message = "Please enter release date.") Date getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(@NotNull Date releaseDate) {
+    public void setReleaseDate(@NotNull(message = "Please enter release date.") Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 

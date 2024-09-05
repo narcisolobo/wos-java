@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class AlbumController {
+public class AlbumAPIController {
     private final AlbumService albumService;
 
-    public AlbumController(AlbumService albumService) {
+    public AlbumAPIController(AlbumService albumService) {
         this.albumService = albumService;
     }
 
