@@ -44,7 +44,7 @@ class Queue {
    * @returns {any} The first item or undefined if empty.
    */
   front() {
-    return this.items[0];
+    return this.isEmpty() ? undefined : this.items[0];
   }
 
   /**
@@ -66,16 +66,32 @@ class Queue {
   size() {
     return this.items.length;
   }
-
-  /**
-   * Logs the items of this queue.
-   * - Time: O(n) linear.
-   * - Space: O(n) linear.
-   * @returns {string} The same string that is logged.
-   */
-  print() {
-    const str = this.items.join(' ');
-    console.log(str);
-    return str;
-  }
 }
+
+const emptyQueue = new Queue();
+const myQueue = new Queue();
+myQueue.enqueue(46);
+myQueue.enqueue(3);
+myQueue.enqueue(36);
+myQueue.enqueue(37);
+myQueue.enqueue(98);
+myQueue.enqueue(23);
+myQueue.enqueue(89);
+myQueue.enqueue(100);
+myQueue.enqueue(24);
+myQueue.enqueue(75);
+
+console.log(myQueue);
+
+const result1 = myQueue.dequeue();
+console.log(`${result1} should equal 46`);
+console.log(myQueue);
+
+const result2 = emptyQueue.isEmpty();
+console.log(`${result2} should equal true`);
+
+const result3 = myQueue.isEmpty();
+console.log(`${result3} should equal false`);
+
+const result4 = myQueue.size();
+console.log(`${result4} should equal 9`);
