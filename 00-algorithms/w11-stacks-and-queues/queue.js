@@ -1,4 +1,43 @@
 /**
+ * Class to represent a stack using an array to store the stacked items.
+ * Follows a LIFO (Last In First Out) order where new items are stacked on
+ * top (back of array) and removed items are removed from the top / back.
+ */
+class Stack {
+  /**
+   * The constructor is executed when instantiating a new Stack() to construct
+   * a new instance.
+   * @returns {Stack} This new Stack instance is returned without having to
+   *    explicitly write 'return' (implicit return).
+   */
+  constructor() {
+    this.items = [];
+  }
+
+  /**
+   * Adds a new given item to the top / back of this stack.
+   * - Time: O(1) constant.
+   * - Space: O(1) constant.
+   * @param {any} item The new item to be added to the top / back.
+   * @returns {number} The new length of this stack.
+   */
+  push(item) {
+    this.items.push(item);
+    return this.items.length;
+  }
+
+  /**
+   * Removes the top / last item from this stack.
+   * - Time: O(1) constant.
+   * - Space: O(1) constant.
+   * @returns {any} The removed item or undefined if this stack was empty.
+   */
+  pop() {
+    return this.items.length === 0 ? undefined : this.items.pop();
+  }
+}
+
+/**
  * Class to represent a queue using an array which follows a FIFO
  * (First In First Out) order. New items are added to the back and items are
  * removed from the front.
@@ -79,7 +118,30 @@ class Queue {
    * @returns {boolean} Whether all the items of the two queues are equal and
    *    in the same order.
    */
-  compareQueues(q2) {}
+  compareQueues(q2) {
+    if (this.size() !== q2.size()) {
+      return false;
+    }
+
+    let count = 0;
+    let isEqual = true;
+    const len = this.size();
+
+    while (count < len) {
+      const dequeued1 = this.dequeue();
+      const dequeued2 = q2.dequeue();
+
+      if (dequeued1 !== dequeued2) {
+        isEqual = false;
+      }
+
+      this.enqueue(dequeued1);
+      q2.enqueue(dequeued2);
+      count++;
+    }
+
+    return isEqual;
+  }
 
   /**
    * Determines if the queue is a palindrome (same items forward and backwards).
@@ -91,7 +153,29 @@ class Queue {
    * - Space: O(?).
    * @returns {boolean}
    */
-  isPalindrome() {}
+  isPalindrome() {
+    let isPal = true;
+    const stack = new Stack(),
+      len = this.size();
+
+    for (let i = 0; i < len; i++) {
+      let dequeued = this.dequeue();
+      stack.push(dequeued);
+      this.enqueue(dequeued);
+    }
+
+    for (let i = 0; i < len; i++) {
+      let dequeued = this.dequeue();
+      let popped = stack.pop();
+
+      if (popped !== dequeued) {
+        isPal = false;
+      }
+
+      this.enqueue(dequeued);
+    }
+    return isPal;
+  }
 }
 
 const emptyQueue = new Queue();

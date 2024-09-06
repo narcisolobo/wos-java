@@ -1,0 +1,246 @@
+[
+  {
+    "mythology": "Greek",
+    "gods": [
+      {
+        "name": "Zeus",
+        "description": "The king of the gods, ruler of the sky and thunder."
+      },
+      {
+        "name": "Hera",
+        "description": "Queen of the gods, protector of marriage and family."
+      },
+      {
+        "name": "Poseidon",
+        "description": "God of the sea and earthquakes."
+      },
+      {
+        "name": "Athena",
+        "description": "Goddess of wisdom, courage, and warfare."
+      },
+      {
+        "name": "Apollo",
+        "description": "God of music, prophecy, and healing."
+      },
+      {
+        "name": "Aphrodite",
+        "description": "Goddess of love and beauty."
+      },
+      {
+        "name": "Hades",
+        "description": "Lord of the underworld."
+      }
+    ]
+  },
+  {
+    "mythology": "Norse",
+    "gods": [
+      {
+        "name": "Odin",
+        "description": "The All-Father, wise and mysterious."
+      },
+      {
+        "name": "Thor",
+        "description": "God of thunder, protector of humanity."
+      },
+      {
+        "name": "Loki",
+        "description": "The trickster, both friend and foe."
+      },
+      {
+        "name": "Frigg",
+        "description": "Queen of the Aesir, wife of Odin."
+      },
+      {
+        "name": "Freya",
+        "description": "Goddess of love, fertility, and magic."
+      }
+    ]
+  },
+  {
+    "mythology": "Egyptian",
+    "gods": [
+      {
+        "name": "Ra",
+        "description": "The sun god, creator of all life."
+      },
+      {
+        "name": "Isis",
+        "description": "Goddess of magic, motherhood, and healing."
+      },
+      {
+        "name": "Osiris",
+        "description": "God of the afterlife and resurrection."
+      },
+      {
+        "name": "Anubis",
+        "description": "Guardian of the dead, associated with mummification."
+      },
+      {
+        "name": "Horus",
+        "description": "Falcon-headed god of kingship and protection."
+      }
+    ]
+  },
+  {
+    "mythology": "Hindu",
+    "gods": [
+      {
+        "name": "Brahma",
+        "description": "The creator, with four faces representing the four Vedas."
+      },
+      {
+        "name": "Vishnu",
+        "description": "The preserver, often incarnated as avatars like Rama and Krishna."
+      },
+      {
+        "name": "Shiva",
+        "description": "The destroyer and transformer, associated with asceticism."
+      },
+      {
+        "name": "Lakshmi",
+        "description": "Goddess of wealth and prosperity."
+      },
+      {
+        "name": "Ganesha",
+        "description": "Elephant-headed remover of obstacles."
+      }
+    ]
+  },
+  {
+    "mythology": "Chinese",
+    "gods": [
+      {
+        "name": "Jade Emperor",
+        "description": "Supreme ruler of heaven."
+      },
+      {
+        "name": "Nuwa",
+        "description": "Creator goddess who repaired the sky."
+      },
+      {
+        "name": "Sun Wukong (Monkey King)",
+        "description": "Mischievous and powerful hero."
+      },
+      {
+        "name": "Guanyin",
+        "description": "Goddess of compassion and mercy."
+      },
+      {
+        "name": "Zhong Kui",
+        "description": "Demon queller and protector against evil spirits."
+      },
+      {
+        "name": "Chang'e",
+        "description": "Moon goddess and wife of Hou Yi."
+      }
+    ]
+  },
+  {
+    "mythology": "Mesoamerican",
+    "gods": [
+      {
+        "name": "Itzamná",
+        "description": "The creator, ruler of day and night, and god of medicine."
+      },
+      {
+        "name": "Chaac",
+        "description": "The rain god, associated with lightning and fertility."
+      },
+      {
+        "name": "Kukulkan",
+        "description": "The feathered serpent, worshipped from Guatemala to the Yucatan."
+      },
+      {
+        "name": "Quetzalcoatl",
+        "description": "The equivalent of Kukulkan in Aztec mythology."
+      },
+      {
+        "name": "Ah Puch",
+        "description": "God of death and the underworld."
+      },
+      {
+        "name": "Ix Chel",
+        "description": "Goddess of fertility, childbirth, and the moon."
+      },
+      {
+        "name": "Cabrakan",
+        "description": "God of earthquakes and mountains."
+      }
+    ]
+  },
+  {
+    "mythology": "Yoruba",
+    "gods": [
+      {
+        "name": "Obatala",
+        "description": "Creator deity, associated with purity and wisdom."
+      },
+      {
+        "name": "Oshun",
+        "description": "Goddess of love, beauty, and fresh water."
+      },
+      {
+        "name": "Shango",
+        "description": "God of thunder, fire, and dance."
+      },
+      {
+        "name": "Yemaya",
+        "description": "Goddess of the sea, motherhood, and nurturing."
+      },
+      {
+        "name": "Ogun",
+        "description": "God of iron, war, and technology."
+      },
+      {
+        "name": "Eshu",
+        "description": "Trickster deity, guardian of crossroads."
+      },
+      {
+        "name": "Oya",
+        "description": "Goddess of winds, storms, and transformation."
+      },
+      {
+        "name": "Osanyin",
+        "description": "God of healing, herbs, and medicine."
+      }
+    ]
+  },
+  {
+    "mythology": "Iroquois",
+    "gods": [
+      {
+        "name": "Sky Woman",
+        "description": "A central figure in the creation story, she fell from the sky and brought life to the Earth."
+      },
+      {
+        "name": "Hahgwehdiyu (Iktomi)",
+        "description": "Trickster figure known for his mischievous and sometimes malevolent deeds."
+      },
+      {
+        "name": "Heno",
+        "description": "Spirit of thunder and lightning, associated with storms and natural phenomena."
+      },
+      {
+        "name": "Awenhai",
+        "description": "Spirit of the winds and atmosphere, associated with the breath of life."
+      },
+      {
+        "name": "Orenda",
+        "description": "A spiritual power or force that pervades the universe and empowers individuals."
+      },
+      {
+        "name": "Ataensic",
+        "description": "Another name for Sky Woman, often associated with the moon and fertility."
+      },
+      {
+        "name": "Tawiscara",
+        "description": "A malevolent figure associated with winter, cold, and hardship."
+      },
+      {
+        "name": "Atahensic",
+        "description": "A goddess associated with childbirth, fertility, and the Earth's bounty."
+      }
+    ]
+  }
+]
