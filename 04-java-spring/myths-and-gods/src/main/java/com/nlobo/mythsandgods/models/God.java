@@ -91,8 +91,17 @@ public class God {
     protected void onCreate(){
         this.createdAt = new Date();
     }
+    
     @PreUpdate
     protected void onUpdate(){
         this.updatedAt = new Date();
+    }
+
+    public Mythology getMythology() {
+        return mythology;
+    }
+
+    public void setMythology(Mythology mythology) {
+        this.mythology = mythology;
     }
 }

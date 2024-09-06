@@ -12,7 +12,6 @@ import java.util.List;
 @Entity
 @Table(name = "mythologies")
 public class Mythology {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -68,6 +67,14 @@ public class Mythology {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<God> getGods() {
+        return gods;
+    }
+
+    public void setGods(List<God> gods) {
+        this.gods = gods;
     }
 
     @PrePersist

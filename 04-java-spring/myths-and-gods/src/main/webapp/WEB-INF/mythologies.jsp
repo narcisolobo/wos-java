@@ -48,7 +48,9 @@
             <tbody>
               <c:forEach var="myth" items="${mythologies}">
                 <tr>
-                  <td>${myth.name}</td>
+                  <td>
+                    <a href="/mythologies/${myth.id}">${myth.name}</a>
+                  </td>
                 </tr>
               </c:forEach>
             </tbody>
