@@ -95,6 +95,7 @@ class Queue {
 }
 
 const emptyQueue = new Queue();
+
 const myQueue = new Queue();
 myQueue.enqueue(46);
 myQueue.enqueue(3);
@@ -107,17 +108,35 @@ myQueue.enqueue(100);
 myQueue.enqueue(24);
 myQueue.enqueue(75);
 
-console.log(myQueue);
+const anotherQueue = new Queue();
+anotherQueue.enqueue(46);
+anotherQueue.enqueue(3);
+anotherQueue.enqueue(36);
+anotherQueue.enqueue(37);
+anotherQueue.enqueue(98);
+anotherQueue.enqueue(23);
+anotherQueue.enqueue(89);
+anotherQueue.enqueue(100);
+anotherQueue.enqueue(24);
+anotherQueue.enqueue(75);
 
-const result1 = myQueue.dequeue();
-console.log(`${result1} should equal 46`);
-console.log(myQueue);
+const palQueue = new Queue();
+palQueue.enqueue(5);
+palQueue.enqueue(10);
+palQueue.enqueue(4);
+palQueue.enqueue(9);
+palQueue.enqueue(4);
+palQueue.enqueue(10);
+palQueue.enqueue(5);
 
-const result2 = emptyQueue.isEmpty();
-console.log(`${result2} should equal true`);
+const result1 = myQueue.compareQueues(anotherQueue);
+console.log(`${result1} should equal true`);
 
-const result3 = myQueue.isEmpty();
-console.log(`${result3} should equal false`);
+const result2 = emptyQueue.compareQueues(myQueue);
+console.log(`${result2} should equal false`);
 
-const result4 = myQueue.size();
-console.log(`${result4} should equal 9`);
+const result3 = palQueue.isPalindrome();
+console.log(`${result3} should equal true`);
+
+const result4 = myQueue.isPalindrome();
+console.log(`${result4} should equal false`);
