@@ -5,3 +5,5 @@ fruity-loops
 .mvn
 apis
 node_modules
+*.zip
+spread-rest
