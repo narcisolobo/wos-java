@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "albums")
@@ -37,6 +38,17 @@ public class Album {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
     private User creator;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "likes",
+            joinColumns = @JoinColumn(name = "album_id"),
+            inverseJoinColumns = @JoinColumn(name = "liker_id")
+    )
+    private List<User> likingUsers;
+
+    @OneToMany(mappedBy = "album", fetch = FetchType.LAZY)
+    private List<Rating> ratings;
 
     public Album() {
     }
@@ -101,6 +113,40 @@ public class Album {
 
     public void setCreator(User creator) {
         this.creator = creator;
+    }
+
+    public List<User> getLikingUsers() {
+        return likingUsers;
+    }
+
+    public void setLikingUsers(List<User> likingUsers) {
+        this.likingUsers = likingUsers;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
+    }
+
+    public boolean hasLikedAlbum(long userId) {
+        for (User likingUser : getLikingUsers()) {
+            if (likingUser.getId().equals(userId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasRatedAlbum(long userId) {
+        for (Rating rating : getRatings()) {
+            if(rating.getRater().getId().equals(userId)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @PrePersist

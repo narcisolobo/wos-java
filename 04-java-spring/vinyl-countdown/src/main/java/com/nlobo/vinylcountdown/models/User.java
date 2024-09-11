@@ -48,6 +48,17 @@ public class User {
     @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
     private List<Album> createdAlbums;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "likes",
+            joinColumns = @JoinColumn(name = "liker_id"),
+            inverseJoinColumns = @JoinColumn(name = "album_id")
+    )
+    private List<Album> likedAlbums;
+
+    @OneToMany(mappedBy = "rater", fetch = FetchType.LAZY)
+    private List<Rating> ratings;
+
     public User() { }
 
     public User(String firstName, String lastName, String email, String password, String confirm) {
@@ -128,6 +139,22 @@ public class User {
 
     public void setCreatedAlbums(List<Album> createdAlbums) {
         this.createdAlbums = createdAlbums;
+    }
+
+    public List<Album> getLikedAlbums() {
+        return likedAlbums;
+    }
+
+    public void setLikedAlbums(List<Album> likedAlbums) {
+        this.likedAlbums = likedAlbums;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
     }
 
     @PrePersist

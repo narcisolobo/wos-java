@@ -84,6 +84,9 @@ public class AlbumController {
         Album album = albumService.getAlbumById(albumId);
         model.addAttribute("album", album);
 
+        double average = albumService.getAverageOfScores(album);
+        model.addAttribute("average", average);
+
         return "albumDetails.jsp";
     }
 
@@ -99,6 +102,10 @@ public class AlbumController {
 
         Album album = albumService.getAlbumById(albumId);
         model.addAttribute("album", album);
+
+        if(!userId.equals(album.getCreator().getId())) {
+            return "redirect:/";
+        }
 
         return "editAlbum.jsp";
     }

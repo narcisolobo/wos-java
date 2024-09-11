@@ -47,6 +47,32 @@
       <h2 class="card-title">${album.title}</h2>
       <h3 class="card-subtitle mb-3">${album.artist}</h3>
       <p class="card-text">${album.description}</p>
+      <p class="card-text">Uploaded by: ${album.creator.firstName}</p>
+      <p class="card-text">${album.likingUsers.size()} likes</p>
+
+      <c:if test="${!album.hasLikedAlbum(user.id) && !album.creator.id.equals(user.id)}">
+        <form action="/likes/create" method="post">
+          <input type="hidden" name="likerId" value="${user.id}" />
+          <input type="hidden" name="albumId" value="${album.id}" />
+          <button class="btn btn-sm btn-primary">Like</button>
+        </form>
+      </c:if>
+
+      <p class="card-text">Average Rating: ${average}</p>
+      <c:if test="${!album.hasRatedAlbum(user.id)}">
+        <form action="/ratings/create" method="post">
+          <input type="hidden" name="raterId" value="${user.id}" />
+          <input type="hidden" name="albumId" value="${album.id}" />
+          <div class="mb-3">
+            <label for="score" class="form-label">Rate this album:</label>
+            <input type="number" class="form-control" min="1" max="5" name="score" id="score" />
+          </div>
+          <div class="text-end">
+            <button type="submit" class="btn btn-primary">Rate</button>
+          </div>
+        </form>
+      </c:if>
+
     </div>
   </div>
 </main>
