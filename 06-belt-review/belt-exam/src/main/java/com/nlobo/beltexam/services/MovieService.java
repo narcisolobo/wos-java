@@ -3,6 +3,7 @@ package com.nlobo.beltexam.services;
 import com.nlobo.beltexam.models.Movie;
 import com.nlobo.beltexam.models.User;
 import com.nlobo.beltexam.repositories.MovieRepository;
+import com.nlobo.beltexam.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +12,11 @@ import java.util.Optional;
 @Service
 public class MovieService {
     private final MovieRepository movieRepository;
-    public MovieService(MovieRepository movieRepository) {
+    private final UserRepository userRepository;
+
+    public MovieService(MovieRepository movieRepository, UserRepository userRepository) {
         this.movieRepository = movieRepository;
+        this.userRepository = userRepository;
     }
 
     public Movie createMovie(Movie movie) {
@@ -20,11 +24,11 @@ public class MovieService {
     }
 
     public List<Movie> getMovies() {
-        return (List<Movie>) movieRepository.findAll();
+        return (List<Movie>) movieRepository.findAllByOrderByReleaseDate();
     }
 
     public List<Movie> getCreatedMovies(User creator) {
-        return (List<Movie>) movieRepository.findByCreator(creator);
+        return (List<Movie>) movieRepository.findByCreatorOrderByReleaseDate(creator);
     }
 
     public Movie getMovie(long id) {
@@ -48,5 +52,25 @@ public class MovieService {
 
     public void deleteMovie(long id) {
         movieRepository.deleteById(id);
+    }
+
+    // user clicks seen button
+    public void watchMovie(long userId, long movieId) {
+        Movie movie = movieRepository.findById(movieId).orElse(null);
+        User user = userRepository.findById(userId).orElse(null);
+        if (user != null && movie != null) {
+            movie.getWatchers().add(user);
+            movieRepository.save(movie);
+        }
+    }
+
+    // user clicks undo button
+    public void unwatchMovie(long userId, long movieId) {
+        Movie movie = movieRepository.findById(movieId).orElse(null);
+        User user = userRepository.findById(userId).orElse(null);
+        if (user != null && movie != null) {
+            movie.getWatchers().remove(user);
+            movieRepository.save(movie);
+        }
     }
 }

@@ -42,15 +42,49 @@
                     <th>Genre</th>
                     <th>Release Year</th>
                     <th>Actions</th>
+                    <th>Seen It?</th>
                 </tr>
             </thead>
             <tbody>
             <c:forEach var="movie" items="${movies}">
                 <tr>
-                    <td>${movie.title}</td>
-                    <td>${movie.genre}</td>
-                    <td>${movie.releaseDate.year}</td>
-                    <td></td>
+                    <td class="align-middle">
+                        <a href="/movies/${movie.id}">${movie.title}</a>
+                    </td>
+                    <td class="align-middle">${movie.genre}</td>
+                    <td class="align-middle">${movie.releaseDate.year}</td>
+                    <td class="align-middle d-flex gap-2">
+                        <c:choose>
+                            <c:when test="${movie.creator.id.equals(user.id)}">
+                                <a href="/movies/${movie.id}/edit" class="btn btn-sm btn-warning">Edit</a>
+                                <form action="/movies/${movie.id}/delete" method="post">
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="btn btn-sm btn-warning disabled">Edit</a>
+                                <a class="btn btn-sm btn-danger disabled">Delete</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${!movie.watchers.contains(user)}">
+                                <form action="/movies/watch" method="post">
+                                    <input type="hidden" name="watcherId" value="${user.id}" />
+                                    <input type="hidden" name="movieId" value="${movie.id}" />
+                                    <button type="submit" class="btn btn-sm btn-primary">Seen</button>
+                                </form>
+                            </c:when>
+                            <c:otherwise>
+                                <form action="/movies/unwatch" method="post">
+                                    <input type="hidden" name="watcherId" value="${user.id}" />
+                                    <input type="hidden" name="movieId" value="${movie.id}" />
+                                    <button type="submit" class="btn btn-sm btn-danger">Undo</button>
+                                </form>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -64,15 +98,41 @@
                     <th>Genre</th>
                     <th>Release Year</th>
                     <th>Actions</th>
+                    <th>Seen It?</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach var="movie" items="${createdMovies}">
                     <tr>
-                        <td>${movie.title}</td>
-                        <td>${movie.genre}</td>
-                        <td>${movie.releaseDate.year}</td>
-                        <td></td>
+                        <td class="align-middle">
+                            <a href="/movies/${movie.id}">${movie.title}</a>
+                        </td>
+                        <td class="align-middle">${movie.genre}</td>
+                        <td class="align-middle">${movie.releaseDate.year}</td>
+                        <td class="d-flex align-items-center gap-2">
+                            <a href="/movies/${movie.id}/edit" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="/movies/${movie.id}/delete" method="post">
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${!movie.watchers.contains(user)}">
+                                    <form action="/movies/watch" method="post">
+                                        <input type="hidden" name="watcherId" value="${user.id}" />
+                                        <input type="hidden" name="movieId" value="${movie.id}" />
+                                        <button type="submit" class="btn btn-sm btn-primary">Seen</button>
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <form action="/movies/unwatch" method="post">
+                                        <input type="hidden" name="watcherId" value="${user.id}" />
+                                        <input type="hidden" name="movieId" value="${movie.id}" />
+                                        <button type="submit" class="btn btn-sm btn-danger">Undo</button>
+                                    </form>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>

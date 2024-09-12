@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface MovieRepository extends CrudRepository<Movie, Long> {
     List<Movie> findByCreator(User creator);
+    List<Movie> findAllByOrderByReleaseDate();
+    List<Movie> findByCreatorOrderByReleaseDate(User creator);
 }

@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "movies")
@@ -43,6 +44,14 @@ public class Movie {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
     private User creator;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "watched_movies",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    List<User> watchers;
 
     public Movie() {}
 
@@ -116,6 +125,14 @@ public class Movie {
 
     public void setCreator(User creator) {
         this.creator = creator;
+    }
+
+    public List<User> getWatchers() {
+        return watchers;
+    }
+
+    public void setWatchers(List<User> watchers) {
+        this.watchers = watchers;
     }
 
     @PrePersist

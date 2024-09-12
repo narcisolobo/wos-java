@@ -48,6 +48,14 @@ public class User {
     @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
     private List<Movie> createdMovies;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "watched_movies",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id")
+    )
+    List<Movie> seenMovies;
+
     public User() { }
 
     public User(String firstName, String lastName, String email, String password, String confirm) {
@@ -128,6 +136,14 @@ public class User {
 
     public void setCreatedMovies(List<Movie> createdMovies) {
         this.createdMovies = createdMovies;
+    }
+
+    public List<Movie> getSeenMovies() {
+        return seenMovies;
+    }
+
+    public void setSeenMovies(List<Movie> seenMovies) {
+        this.seenMovies = seenMovies;
     }
 
     @PrePersist
