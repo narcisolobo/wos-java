@@ -1,4 +1,4 @@
-package com.nlobo.beltexam;
+package com.nlobo.beltexam.controllers;
 
 import com.nlobo.beltexam.models.LoginUser;
 import com.nlobo.beltexam.models.User;
@@ -40,7 +40,7 @@ public class UserController {
         }
 
         session.setAttribute("userId", potentialUser.getId());
-        return "redirect:/dashboard";
+        return "redirect:/movies/dashboard";
     }
 
     @PostMapping("/login")
@@ -59,25 +59,12 @@ public class UserController {
         }
 
         session.setAttribute("userId", potentialUser.getId());
-        return "redirect:/dashboard";
+        return "redirect:/movies/dashboard";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/";
-    }
-
-    @GetMapping("/dashboard")
-    public String dashboard(HttpSession session, Model model) {
-        Long userId = (Long) session.getAttribute("userId");
-
-        if (userId == null) {
-            return "redirect:/";
-        }
-
-        User user = userService.findById(userId);
-        model.addAttribute("user", user);
-        return "dashboard.jsp";
     }
 }

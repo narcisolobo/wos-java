@@ -13,12 +13,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <title>Login-Reg</title>
+    <title>The WatchList</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand" href="/">Belt Exam</a>
+            <a class="navbar-brand" href="/">The WatchList</a>
         </div>
     </nav>
     <main class="container py-5">

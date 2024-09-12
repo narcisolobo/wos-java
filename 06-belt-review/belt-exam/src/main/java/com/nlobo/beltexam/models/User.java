@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -43,6 +44,9 @@ public class User {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
+
+    @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
+    private List<Movie> createdMovies;
 
     public User() { }
 
@@ -116,6 +120,14 @@ public class User {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<Movie> getCreatedMovies() {
+        return createdMovies;
+    }
+
+    public void setCreatedMovies(List<Movie> createdMovies) {
+        this.createdMovies = createdMovies;
     }
 
     @PrePersist
