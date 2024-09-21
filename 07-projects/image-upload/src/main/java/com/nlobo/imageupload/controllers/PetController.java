@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/pets")
@@ -34,6 +35,14 @@ public class PetController {
 
         List<Pet> pets = petService.getPets();
         model.addAttribute("pets", pets);
+
+        String randomFileName = UUID.randomUUID().toString();
+        model.addAttribute("randomFileName", randomFileName);
         return "dashboard.jsp";
+    }
+
+    @GetMapping("/new")
+    public String newPet(Model model) {
+        return "newPet.jsp";
     }
 }

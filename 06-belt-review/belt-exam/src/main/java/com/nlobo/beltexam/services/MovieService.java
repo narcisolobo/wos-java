@@ -6,6 +6,8 @@ import com.nlobo.beltexam.repositories.MovieRepository;
 import com.nlobo.beltexam.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,6 +64,15 @@ public class MovieService {
             movie.getWatchers().add(user);
             movieRepository.save(movie);
         }
+//        public Result uploadToImageKit(File imageFile) throws IOException {
+//            if (imageFile == null || !imageFile.exists()) {
+//                throw new IllegalArgumentException("Invalid image file");
+//            }
+//
+//            String base64Image = Utils.fileToBase64(imageFile);
+//            String filename = imageFile.getName();
+//            return null;
+//        }
     }
 
     // user clicks undo button
