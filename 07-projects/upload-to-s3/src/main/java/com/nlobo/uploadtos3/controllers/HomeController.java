@@ -1,6 +1,7 @@
 package com.nlobo.uploadtos3.controllers;
 
 import com.nlobo.uploadtos3.models.LoginUser;
+import com.nlobo.uploadtos3.models.RegisterUser;
 import com.nlobo.uploadtos3.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +16,7 @@ public class HomeController {
     public String home(
             Model model,
             @RequestParam(required = false) String message,
-            @ModelAttribute("user") User user,
+            @ModelAttribute("registerUser") RegisterUser registerUser,
             @ModelAttribute("loginUser") LoginUser loginUser) {
         model.addAttribute("message", message);
         return "index";

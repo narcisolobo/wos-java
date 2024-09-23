@@ -38,7 +38,7 @@
         <h2 class="display-6 mb-3">Register</h2>
         <div class="card shadow mb-3">
           <div class="card-body">
-            <form:form action="/accounts/register" method="post" modelAttribute="user">
+            <form:form action="/accounts/register" method="post" modelAttribute="registerUser">
               <div class="mb-3">
                 <form:label class="form-label" path="username">Username:</form:label>
                 <form:input cssClass="form-control" path="username" />

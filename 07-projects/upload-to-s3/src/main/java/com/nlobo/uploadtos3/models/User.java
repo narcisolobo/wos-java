@@ -16,23 +16,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotEmpty
     @Size(min = 5, max = 50)
     private String username;
 
     private String avatarUrl = "/images/generic-user.png";
 
-    @NotEmpty
     @Email
     private String email;
 
-    @NotEmpty
     @Size(min = 8, max = 255)
     private String password;
 
     @Transient
-    @NotEmpty
-    @Size(min = 8, max = 255)
     private String confirm;
 
     @Column(updatable = false)
@@ -57,11 +52,11 @@ public class User {
         this.id = id;
     }
 
-    public @NotEmpty @Size(min = 5, max = 50) String getUsername() {
+    public @Size(min = 5, max = 50) String getUsername() {
         return username;
     }
 
-    public void setUsername(@NotEmpty @Size(min = 5, max = 50) String username) {
+    public void setUsername(@Size(min = 5, max = 50) String username) {
         this.username = username;
     }
 
@@ -73,27 +68,27 @@ public class User {
         this.avatarUrl = avatarUrl;
     }
 
-    public @NotEmpty @Email String getEmail() {
+    public @Email String getEmail() {
         return email;
     }
 
-    public void setEmail(@NotEmpty @Email String email) {
+    public void setEmail(@Email String email) {
         this.email = email;
     }
 
-    public @NotEmpty @Size(min = 8, max = 255) String getPassword() {
+    public @Size(min = 8, max = 255) String getPassword() {
         return password;
     }
 
-    public void setPassword(@NotEmpty @Size(min = 8, max = 255) String password) {
+    public void setPassword(@Size(min = 8, max = 255) String password) {
         this.password = password;
     }
 
-    public @NotEmpty @Size(min = 8, max = 255) String getConfirm() {
+    public String getConfirm() {
         return confirm;
     }
 
-    public void setConfirm(@NotEmpty @Size(min = 8, max = 255) String confirm) {
+    public void setConfirm(String confirm) {
         this.confirm = confirm;
     }
 

@@ -1,4 +1,4 @@
-package com.nlobo.imageupload.models;
+package com.nlobo.uploadtos3.validators;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -8,15 +8,15 @@ public class ImageFileValidator implements ConstraintValidator<ImageFile, Multip
 
     @Override
     public boolean isValid(MultipartFile file, ConstraintValidatorContext context) {
-        if (file == null || file.isEmpty()) {
+        if (file == null) {
             return true;
         }
 
         String contentType = file.getContentType();
         return contentType != null && (
                 contentType.equals("image/jpeg")
-                        || contentType.equals("image/png")
                         || contentType.equals("image/gif")
+                        || contentType.equals("image/png")
         );
     }
 }

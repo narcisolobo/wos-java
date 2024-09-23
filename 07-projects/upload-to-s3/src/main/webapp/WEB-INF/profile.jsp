@@ -47,8 +47,15 @@
       <div class="col-12 col-lg-6">
         <div class="card shadow">
           <div class="card-body">
-            <h3 class="card-title">Edit Your Profile</h3>
-
+            <h3 class="card-title">Edit Your Avatar</h3>
+            <form:form action="/accounts/${user.id}/update" method="post" modelAttribute="avatarForm" enctype="multipart/form-data">
+              <div class="mb-3">
+                <form:label cssClass="visually-hidden" path="avatar">Choose file:</form:label>
+                <form:input type="file" cssClass="form-control" path="avatar" />
+                <form:errors path="avatar" cssClass="form-text text-warning" element="div" />
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Upload</button>
+            </form:form>
           </div>
         </div>
       </div>
